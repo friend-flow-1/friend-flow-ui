@@ -1,0 +1,39 @@
+<h2 class="text-2xl font-semibold mb-4">Register</h2>
+<form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-4">
+  <input
+    class="p-2 border rounded"
+    formControlName="email"
+    type="email"
+    placeholder="Email"
+  />
+  <input
+    class="p-2 border rounded"
+    formControlName="password"
+    type="password"
+    placeholder="Password"
+  />
+  <input
+    class="p-2 border rounded"
+    formControlName="first_name"
+    type="text"
+    placeholder="First Name"
+  />
+  <input
+    class="p-2 border rounded"
+    formControlName="last_name"
+    type="text"
+    placeholder="Last Name"
+  />
+  <select class="p-2 border rounded" formControlName="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+  </select>
+  <button
+    class="bg-green-500 text-white py-2 rounded hover:bg-green-600"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    Register
+  </button>
+</form>

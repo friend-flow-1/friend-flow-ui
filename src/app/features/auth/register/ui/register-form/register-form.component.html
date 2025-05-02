@@ -1,5 +1,9 @@
-<h2 class="text-2xl font-semibold mb-4">Register</h2>
-<form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-4">
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  #form="ngForm"
+  class="flex flex-col gap-4"
+>
   <input
     class="p-2 border rounded"
     formControlName="email"
@@ -11,6 +15,12 @@
     formControlName="password"
     type="password"
     placeholder="Password"
+  />
+  <input
+    class="p-2 border rounded"
+    formControlName="confirmPassword"
+    type="password"
+    placeholder="Confirm password"
   />
   <input
     class="p-2 border rounded"
@@ -32,7 +42,7 @@
   <button
     class="bg-green-500 text-white py-2 rounded hover:bg-green-600"
     type="submit"
-    [disabled]="form.invalid"
+    [disabled]="status() === 'creating'"
   >
     Register
   </button>

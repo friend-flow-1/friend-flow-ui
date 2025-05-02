@@ -1,0 +1,9 @@
+<h2 class="text-2xl font-semibold mb-4">Login</h2>
+<div>
+  @if (authService.user() === null) {
+  <app-login-form
+    [loginStatus]="loginService.status()"
+    (login)="loginService.login$.next($event)"
+  ></app-login-form>
+  }
+</div>

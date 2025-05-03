@@ -3,20 +3,17 @@
   (ngSubmit)="login.emit(loginForm.getRawValue())"
   class="flex flex-col gap-4"
 >
+  <input hlmInput formControlName="email" type="email" placeholder="Email" />
   <input
-    class="p-2 border rounded"
-    formControlName="email"
-    type="email"
-    placeholder="Email"
-  />
-  <input
-    class="p-2 border rounded"
+    hlmInput
+    class="bg-blue-300"
     formControlName="password"
     type="password"
     placeholder="Password"
   />
   <button
-    class="bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+    hlmBtn
+    variant="destructive"
     type="submit"
     [disabled]="loginStatus() === 'authenticating'"
   >

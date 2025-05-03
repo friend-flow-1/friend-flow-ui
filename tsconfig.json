@@ -17,10 +17,27 @@
     "module": "ES2022",
     "baseUrl": "src",
     "paths": {
-      "@env/*": ["environments/*"],
-      "@core/*": ["app/core/*"],
-      "@features/*": ["app/features/*"],
-      "@shared/*": ["app/shared/*"]
+      "@env/*": [
+        "environments/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@features/*": [
+        "app/features/*"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@spartan-ng/ui-button-helm": [
+        ".\\src/app/shared/ui/ui-button-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-input-helm": [
+        ".\\src/app/shared/ui/ui-input-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-formfield-helm": [
+        ".\\src/app/shared/ui/ui-formfield-helm/src/index.ts"
+      ]
     }
   },
   "angularCompilerOptions": {

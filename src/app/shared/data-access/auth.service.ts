@@ -122,7 +122,7 @@ export class AuthService {
         tap((res: RefreshTokenResponseDTO) => {
           this.setSession(res.data.access_token, res.data.refresh_token);
         }),
-        catchError(() => {
+        catchError((err) => {
           this.logout();
           return EMPTY;
         })

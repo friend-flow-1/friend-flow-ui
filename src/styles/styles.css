@@ -1,62 +1,86 @@
-@import '@angular/cdk/overlay-prebuilt.css';
-@import '@spartan-ng/brain/hlm-tailwind-preset.css';
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Patrick+Hand&family=Poppins:wght@200;300;400;500;600;700;900&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import "@angular/cdk/overlay-prebuilt.css";
+@import "@spartan-ng/brain/hlm-tailwind-preset.css";
 @import "tailwindcss";
 
-
 :root {
---font-sans: ''
+  --font-sans: "Inter", san-serif;
+}
+
+@theme {
+  --font-inter: "Inter", san-serif;
+  --font-patrick-hand: "Patrick Hand", san-serif;
 }
 
 :root {
---background: 0 0% 100%;
---foreground: 224 71.4% 4.1%;
---muted: 220 14.3% 95.9%;
---muted-foreground: 220 8.9% 46.1%;
---popover: 0 0% 100%;
---popover-foreground: 224 71.4% 4.1%;
---card: 0 0% 100%;
---card-foreground: 224 71.4% 4.1%;
---border: 220 13% 91%;
---input: 220 13% 91%;
---primary: 262.1 83.3% 57.8%;
---primary-foreground: 210 20% 98%;
---secondary: 220 14.3% 95.9%;
---secondary-foreground: 220.9 39.3% 11%;
---accent: 220 14.3% 95.9%;
---accent-foreground: 220.9 39.3% 11%;
---destructive: 0 84.2% 60.2%;
---destructive-foreground: 210 20% 98%;
---ring: 262.1 83.3% 57.8%;
---radius: 0.5rem;
-color-scheme: light;
+  --background: #f5efff;
+  --foreground: #1c1c1e;
+
+  --muted: #e5d9f2;
+  --muted-foreground: #6c6c80;
+
+  --popover: #f5efff;
+  --popover-foreground: #1c1c1e;
+
+  --card: #cdc1ff;
+  --card-foreground: #1c1c1e;
+
+  --border: #cdc1ff;
+  --input: #cdc1ff;
+
+  --primary: #a294f9;
+  --primary-foreground: #ffffff;
+
+  --secondary: #e5d9f2;
+  --secondary-foreground: #1c1c1e;
+
+  --accent: #cdc1ff;
+  --accent-foreground: #1c1c1e;
+
+  --destructive: #f87171; /* lighter red */
+  --destructive-foreground: #ffffff;
+
+  --ring: #a294f9;
+  --radius: 0.5rem;
+
+  color-scheme: light;
 }
 
 .dark {
---background: 224 71.4% 4.1%;
---foreground: 210 20% 98%;
---muted: 215 27.9% 16.9%;
---muted-foreground: 217.9 10.6% 64.9%;
---popover: 224 71.4% 4.1%;
---popover-foreground: 210 20% 98%;
---card: 224 71.4% 4.1%;
---card-foreground: 210 20% 98%;
---border: 215 27.9% 16.9%;
---input: 215 27.9% 16.9%;
---primary: 263.4 70% 50.4%;
---primary-foreground: 210 20% 98%;
---secondary: 215 27.9% 16.9%;
---secondary-foreground: 210 20% 98%;
---accent: 215 27.9% 16.9%;
---accent-foreground: 210 20% 98%;
---destructive: 0 62.8% 30.6%;
---destructive-foreground: 210 20% 98%;
---ring: 263.4 70% 50.4%;
-color-scheme: dark;
-}
+  --background: 243 48% 16%;
+  --foreground: 0 0% 96%;
 
+  --muted: 249 51% 28%;
+  --muted-foreground: 240 20% 69%;
+
+  --popover: 243 48% 16%;
+  --popover-foreground: 0 0% 96%;
+
+  --card: 245 39% 39%;
+  --card-foreground: 0 0% 96%;
+
+  --border: 249 51% 28%;
+  --input: 249 51% 28%;
+
+  --primary: 280 34% 76%;
+  --primary-foreground: 243 48% 16%;
+
+  --secondary: 249 51% 28%;
+  --secondary-foreground: 0 0% 96%;
+
+  --accent: 38 82% 47%;
+  --accent-foreground: 0 0% 96%;
+
+  --destructive: 0 91% 71%; /* lighter red */
+  --destructive-foreground: 0 0% 100%;
+
+  --ring: 280 34% 76%;
+
+  color-scheme: dark;
+}
 
 @layer base {
-* {
-@apply border-border;
-}
+  * {
+    @apply border-border;
+  }
 }

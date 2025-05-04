@@ -1,22 +1,23 @@
-<form
-  [formGroup]="loginForm"
-  (ngSubmit)="login.emit(loginForm.getRawValue())"
-  class="flex flex-col gap-4"
->
-  <input hlmInput formControlName="email" type="email" placeholder="Email" />
-  <input
-    hlmInput
-    class="bg-blue-300"
-    formControlName="password"
-    type="password"
-    placeholder="Password"
-  />
-  <button
-    hlmBtn
-    variant="destructive"
-    type="submit"
-    [disabled]="loginStatus() === 'authenticating'"
+<div class="mx-auto max-w-[28rem] bg-primary p-[2rem] rounded-md">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="login.emit(loginForm.getRawValue())"
+    class="flex flex-col gap-4 px-1"
   >
-    Login
-  </button>
-</form>
+    <input hlmInput formControlName="email" type="email" placeholder="Email" />
+    <input
+      hlmInput
+      formControlName="password"
+      type="password"
+      placeholder="Password"
+    />
+    <button
+      hlmBtn
+      variant="destructive"
+      type="submit"
+      [disabled]="loginStatus() === 'authenticating'"
+    >
+      Login
+    </button>
+  </form>
+</div>

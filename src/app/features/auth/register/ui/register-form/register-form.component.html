@@ -1,49 +1,121 @@
-<form
-  [formGroup]="registerForm"
-  (ngSubmit)="onSubmit()"
-  #form="ngForm"
-  class="flex flex-col gap-4"
->
-  <input
-    class="p-2 border rounded"
-    formControlName="email"
-    type="email"
-    placeholder="Email"
-  />
-  <input
-    class="p-2 border rounded"
-    formControlName="password"
-    type="password"
-    placeholder="Password"
-  />
-  <input
-    class="p-2 border rounded"
-    formControlName="confirmPassword"
-    type="password"
-    placeholder="Confirm password"
-  />
-  <input
-    class="p-2 border rounded"
-    formControlName="first_name"
-    type="text"
-    placeholder="First Name"
-  />
-  <input
-    class="p-2 border rounded"
-    formControlName="last_name"
-    type="text"
-    placeholder="Last Name"
-  />
-  <select class="p-2 border rounded" formControlName="gender">
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-    <option value="other">Other</option>
-  </select>
-  <button
-    class="bg-green-500 text-white py-2 rounded hover:bg-green-600"
-    type="submit"
-    [disabled]="status() === 'creating'"
+<div class="m-auto min-w-[25rem] bg-background p-[2rem] rounded-md h-full">
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    #form="ngForm"
+    class="flex flex-col gap-4"
   >
-    Register
-  </button>
-</form>
+    <div class="flex flex-col items-center">
+      <div class="text-base text-foreground">Create an account</div>
+    </div>
+    <label hlmLabel class="flex flex-col gap-2">
+      Email*
+      <hlm-form-field>
+        <input
+          aria-label="Email"
+          formControlName="email"
+          class="w-80"
+          hlmInput
+          type="email"
+          placeholder="Email"
+        />
+        @if (registerForm.get('email')?.getError('required')) {
+        <hlm-error>Email is required</hlm-error>
+        }
+      </hlm-form-field>
+    </label>
+    <label hlmLabel class="flex flex-col gap-2">
+      Password*
+      <hlm-form-field>
+        <input
+          aria-label="Password"
+          hlmInput
+          class="w-80"
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+        />
+        @if (registerForm.get('password')?.getError('required')) {
+        <hlm-error>Password is required</hlm-error>
+        }
+      </hlm-form-field>
+    </label>
+    <label hlmLabel class="flex flex-col gap-2">
+      Confirm Password*
+      <hlm-form-field>
+        <input
+          aria-label="Confirm Password"
+          hlmInput
+          class="w-80"
+          formControlName="confirmPassword"
+          type="password"
+          placeholder="Confirm Password"
+        />
+        @if (registerForm.get('confirmPassword')?.getError('required')) {
+        <hlm-error>Password is required</hlm-error>
+        }
+      </hlm-form-field>
+      @if (registerForm.getError('passwordMatch')) {
+      <hlm-error>Confirm password is not match with password</hlm-error>
+      }
+    </label>
+    <label hlmLabel class="flex flex-col gap-2">
+      First Name*
+      <hlm-form-field>
+        <input
+          aria-label="First Name"
+          formControlName="first_name"
+          hlmInput
+          class="w-80"
+          type="text"
+          placeholder="First Name"
+        />
+        @if (registerForm.get('first_name')?.getError('required')) {
+        <hlm-error>First Name is required</hlm-error>
+        }
+      </hlm-form-field>
+    </label>
+    <label hlmLabel class="flex flex-col gap-2">
+      Last Name*
+      <hlm-form-field>
+        <input
+          aria-label="Last Name"
+          formControlName="last_name"
+          hlmInput
+          class="w-80"
+          type="text"
+          placeholder="Last Name"
+        />
+        @if (registerForm.get('last_name')?.getError('required')) {
+        <hlm-error>Last Name is required</hlm-error>
+        }
+      </hlm-form-field>
+    </label>
+    <brn-select
+      class="w-80 text-primary text-sm flex flex-col gap-2"
+      placeholder="Select an option*"
+      formControlName="gender"
+    >
+      <hlm-select-trigger class="w-80">
+        <hlm-select-value />
+      </hlm-select-trigger>
+      <hlm-select-content>
+        <hlm-option value="male">Male</hlm-option>
+        <hlm-option value="female">Female</hlm-option>
+        <hlm-option value="other">Other</hlm-option>
+      </hlm-select-content>
+    </brn-select>
+    <button
+      class="bg-green-500 text-white py-2 rounded hover:bg-green-600"
+      type="submit"
+      [disabled]="status() === 'creating'"
+    >
+      Register
+    </button>
+    <div class="text-xs">
+      <a routerLink="/login" class="underline text-primary">
+        Already have an account?
+      </a>
+    </div>
+  </form>
+</div>

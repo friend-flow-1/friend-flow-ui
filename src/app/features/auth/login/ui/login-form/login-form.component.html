@@ -1,26 +1,46 @@
-<div class="m-auto max-w-[28rem] bg-background p-[2rem] rounded-md h-full">
+<div class="m-auto min-w-[25rem] bg-background p-[2rem] rounded-md h-full">
   <form
     [formGroup]="loginForm"
     (ngSubmit)="login.emit(loginForm.getRawValue())"
     class="flex flex-col gap-4 px-1"
   >
-    <label hlmLabel>
+    <div class="flex flex-col items-center">
+      <div class="text-base text-foreground">Welcome back!</div>
+      <div class="text-sm text-foreground">
+        We're so excited to see you again
+      </div>
+    </div>
+    <label hlmLabel class="flex flex-col gap-2">
       Email*
-      <input
-        hlmInput
-        formControlName="email"
-        type="email"
-        placeholder="Email"
-      />
+      <hlm-form-field>
+        <input
+          aria-label="Email"
+          formControlName="email"
+          class="w-80"
+          hlmInput
+          type="text"
+          placeholder="Email"
+        />
+        @if (loginForm.get('email')?.getError('required')) {
+        <hlm-error>Email is required</hlm-error>
+        }
+      </hlm-form-field>
     </label>
-    <label hlmLabel>
-      Password
-      <input
-        hlmInput
-        formControlName="password"
-        type="password"
-        placeholder="Password"
-      />
+
+    <label hlmLabel class="flex flex-col gap-2">
+      <span>Password*</span>
+      <hlm-form-field>
+        <input
+          hlmInput
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+          class="w-full"
+        />
+        @if (loginForm.get('password')?.getError('required')) {
+        <hlm-error>Password is required</hlm-error>
+        }
+      </hlm-form-field>
     </label>
     <button
       hlmBtn
@@ -30,5 +50,9 @@
     >
       Login
     </button>
+    <div class="text-xs">
+      Need an account?
+      <a routerLink="/register" class="underline text-primary">Register</a>
+    </div>
   </form>
 </div>

@@ -4,16 +4,27 @@
     (ngSubmit)="login.emit(loginForm.getRawValue())"
     class="flex flex-col gap-4 px-1"
   >
-    <input hlmInput formControlName="email" type="email" placeholder="Email" />
-    <input
-      hlmInput
-      formControlName="password"
-      type="password"
-      placeholder="Password"
-    />
+    <label hlmLabel>
+      Email*
+      <input
+        hlmInput
+        formControlName="email"
+        type="email"
+        placeholder="Email"
+      />
+    </label>
+    <label hlmLabel>
+      Password
+      <input
+        hlmInput
+        formControlName="password"
+        type="password"
+        placeholder="Password"
+      />
+    </label>
     <button
       hlmBtn
-      variant="destructive"
+      variant="secondary"
       type="submit"
       [disabled]="loginStatus() === 'authenticating'"
     >

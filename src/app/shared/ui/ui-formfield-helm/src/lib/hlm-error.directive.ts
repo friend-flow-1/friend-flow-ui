@@ -5,7 +5,7 @@ import { Directive } from '@angular/core';
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'hlm-error',
   host: {
-    class: 'block text-destructive text-xs font-medium',
+    class: 'block text-destructive text-xs font-medium italic',
   },
 })
 export class HlmErrorDirective {}

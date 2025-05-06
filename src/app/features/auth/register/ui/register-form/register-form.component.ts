@@ -10,6 +10,7 @@ import { HlmInputDirective } from '@shared/ui/ui-input-helm/src';
 import { HlmLabelDirective } from '@shared/ui/ui-label-helm/src';
 import { BrnSelectImports } from '@spartan-ng/brain/select';
 import { HlmSelectImports } from '@shared/ui/ui-select-helm/src';
+import { HlmButtonDirective } from '@shared/ui/ui-button-helm/src';
 
 @Component({
   selector: 'app-register-form',
@@ -21,6 +22,7 @@ import { HlmSelectImports } from '@shared/ui/ui-select-helm/src';
     HlmLabelDirective,
     BrnSelectImports,
     HlmSelectImports,
+    HlmButtonDirective,
   ],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.scss',

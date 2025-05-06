@@ -10,24 +10,26 @@
         We're so excited to see you again
       </div>
     </div>
-    <label hlmLabel class="flex flex-col gap-2">
+    <label hlmLabel class="flex flex-col gap-2 w-full">
       Email*
       <hlm-form-field>
         <input
+          class="w-full"
           aria-label="Email"
           formControlName="email"
-          class="w-80"
           hlmInput
           type="text"
           placeholder="Email"
         />
         @if (loginForm.get('email')?.getError('required')) {
         <hlm-error>Email is required</hlm-error>
+        } @if (loginForm.get('email')?.getError('email')) {
+        <hlm-error>Email is invalid</hlm-error>
         }
       </hlm-form-field>
     </label>
 
-    <label hlmLabel class="flex flex-col gap-2">
+    <label hlmLabel class="flex flex-col gap-2 w-full">
       <span>Password*</span>
       <hlm-form-field>
         <input
@@ -44,12 +46,18 @@
     </label>
     <button
       hlmBtn
-      variant="secondary"
+      class="w-full"
+      variant="default"
       type="submit"
       [disabled]="loginStatus() === 'authenticating'"
     >
       Login
     </button>
+    @if (loginStatus() === 'error') {
+    <div class="text-sm text-destructive italic">
+      Login or password is invalid.
+    </div>
+    }
     <div class="text-xs">
       Need an account?
       <a routerLink="/register" class="underline text-primary">Register</a>

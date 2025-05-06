@@ -8,29 +8,31 @@
     <div class="flex flex-col items-center">
       <div class="text-base text-foreground">Create an account</div>
     </div>
-    <label hlmLabel class="flex flex-col gap-2">
+    <label hlmLabel class="flex flex-col gap-2 w-full">
       Email*
       <hlm-form-field>
         <input
           aria-label="Email"
           formControlName="email"
-          class="w-80"
+          class="w-full"
           hlmInput
           type="email"
           placeholder="Email"
         />
         @if (registerForm.get('email')?.getError('required')) {
         <hlm-error>Email is required</hlm-error>
+        } @if (registerForm.get('email')?.getError('email')) {
+        <hlm-error>Email is invalid</hlm-error>
         }
       </hlm-form-field>
     </label>
-    <label hlmLabel class="flex flex-col gap-2">
+    <label hlmLabel class="flex flex-col gap-2 w-full">
       Password*
       <hlm-form-field>
         <input
           aria-label="Password"
           hlmInput
-          class="w-80"
+          class="w-full"
           formControlName="password"
           type="password"
           placeholder="Password"
@@ -40,13 +42,13 @@
         }
       </hlm-form-field>
     </label>
-    <label hlmLabel class="flex flex-col gap-2">
+    <label hlmLabel class="flex flex-col gap-2 w-full">
       Confirm Password*
       <hlm-form-field>
         <input
           aria-label="Confirm Password"
           hlmInput
-          class="w-80"
+          class="w-full"
           formControlName="confirmPassword"
           type="password"
           placeholder="Confirm Password"
@@ -55,18 +57,18 @@
         <hlm-error>Password is required</hlm-error>
         }
       </hlm-form-field>
-      @if (registerForm.getError('passwordMatch')) {
+      @if (registerForm.getError('passwordMatch') && registerForm.dirty) {
       <hlm-error>Confirm password is not match with password</hlm-error>
       }
     </label>
-    <label hlmLabel class="flex flex-col gap-2">
+    <label hlmLabel class="flex flex-col gap-2 w-full">
       First Name*
       <hlm-form-field>
         <input
           aria-label="First Name"
           formControlName="first_name"
           hlmInput
-          class="w-80"
+          class="w-full"
           type="text"
           placeholder="First Name"
         />
@@ -82,7 +84,7 @@
           aria-label="Last Name"
           formControlName="last_name"
           hlmInput
-          class="w-80"
+          class="w-full"
           type="text"
           placeholder="Last Name"
         />
@@ -92,11 +94,11 @@
       </hlm-form-field>
     </label>
     <brn-select
-      class="w-80 text-primary text-sm flex flex-col gap-2"
+      class="w-full text-primary text-sm flex flex-col gap-2"
       placeholder="Select an option*"
       formControlName="gender"
     >
-      <hlm-select-trigger class="w-80">
+      <hlm-select-trigger class="w-full">
         <hlm-select-value />
       </hlm-select-trigger>
       <hlm-select-content>
@@ -106,12 +108,19 @@
       </hlm-select-content>
     </brn-select>
     <button
-      class="bg-green-500 text-white py-2 rounded hover:bg-green-600"
+      hlmBtn
+      class="w-full"
+      variant="secondary"
       type="submit"
       [disabled]="status() === 'creating'"
     >
       Register
     </button>
+
+    @if (status() === 'error') {
+    <div class="text-sm text-destructive italic">Create account failed</div>
+    }
+
     <div class="text-xs">
       <a routerLink="/login" class="underline text-primary">
         Already have an account?

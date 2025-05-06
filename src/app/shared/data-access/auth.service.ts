@@ -7,7 +7,7 @@ import {
   RefreshTokenResponseDTO,
   RegisterResponseDTO,
 } from '@shared/interfaces/auth';
-import { catchError, EMPTY, tap } from 'rxjs';
+import { catchError, EMPTY, tap, throwError } from 'rxjs';
 import { StorageService } from './storage.service';
 import {
   ACCESS_TOKEN_KEY,
@@ -67,9 +67,9 @@ export class AuthService {
             res.data.ip
           );
         }),
-        catchError(() => {
+        catchError((err) => {
           this.clearSession();
-          return EMPTY;
+          return throwError(() => err);
         })
       );
   }
@@ -81,8 +81,8 @@ export class AuthService {
         credentials
       )
       .pipe(
-        catchError(() => {
-          return EMPTY;
+        catchError((err) => {
+          return throwError(() => err);
         })
       );
   }

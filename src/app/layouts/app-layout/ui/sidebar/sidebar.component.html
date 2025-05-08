@@ -1,0 +1,25 @@
+<aside
+  [class.collapsed]="collapsed()"
+  class="flex flex-col w-[3.5rem] h-full items-center bg-black"
+>
+  <div class="h-[3rem]">
+    <img src="/assets/icons/logo-ff-icon.png" class="w-8 h-8" />
+  </div>
+  <a
+    routerLink="/chat/channels/@me"
+    routerLinkActive="bg-border text-white"
+    class="flex flex-col items-center gap-1 w-full text-primary hover:bg-border hover:text-white py-2 transition-colors duration-200"
+  >
+    <ng-icon hlm size="base" name="lucideMessageSquareText" />
+    <div class="text-xs">Chat</div>
+  </a>
+
+  <a
+    routerLink="/finance/me"
+    routerLinkActive="bg-border text-white"
+    class="flex flex-col items-center gap-1 w-full text-primary hover:bg-border hover:text-white py-2 transition-colors duration-200"
+  >
+    <ng-icon hlm size="base" name="matAttachMoneyOutline" />
+    <div class="text-xs">Money</div>
+  </a>
+</aside>

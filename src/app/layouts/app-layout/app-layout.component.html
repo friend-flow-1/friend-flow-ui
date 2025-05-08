@@ -1,0 +1,9 @@
+<div class="w-screen h-screen flex bg-background">
+  <app-sidebar [collapsed]="sidebarCollapsed()"></app-sidebar>
+
+  <brn-separator decorative hlmSeparator orientation="vertical" />
+
+  <main class="flex-1 overflow-y-auto">
+    <router-outlet></router-outlet>
+  </main>
+</div>

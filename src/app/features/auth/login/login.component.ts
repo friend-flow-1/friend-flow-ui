@@ -20,7 +20,7 @@ export class LoginComponent {
   constructor() {
     effect(() => {
       if (this.authService.user()) {
-        this.router.navigate(['home']);
+        this.router.navigate(['chat', 'channels', '@me']);
       }
     });
   }

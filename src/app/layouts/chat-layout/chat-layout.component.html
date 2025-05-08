@@ -1,0 +1,83 @@
+<!-- <div class="w-full h-full flex flex-col">
+  <div class="h-[2.25rem] bg-gray-500">Above header</div>
+  <div class="flex-1 bg-gray-50 flex">
+    <div class="w-[30%] flex flex-col justify-between">
+      <div class="flex flex-1">
+        <div class="bg-gray-800 w-[4.5rem]">
+          <div class="h-[3rem] bg-amber-700">Direct message</div>
+          <div>Sidebar (channel list)</div>
+        </div>
+        <div class="flex-1 bg-gray-700">
+          <div class="h-[3rem] bg-amber-700">
+            Channel name/find conversion(me)
+          </div>
+          <div>Sub channel list / direct message user</div>
+        </div>
+      </div>
+      <div class="bg-yellow-700 h-[3.5rem]">Avatar + Profile</div>
+    </div>
+    <div class="w-[70%] flex flex-col">
+      <div class="bg-gray-300 h-[3rem]">header message + member list</div>
+      <div class="flex-1 flex">
+        <div class="w-[75%] bg-gray-400 h-full">Messages</div>
+        <div class="w-[25%] bg-gray-500">Member list</div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="w-full h-full grid grid-rows-[2.25rem_1fr]">
+  <!-- Top header -->
+  <div class="bg-gray-500">Above header</div>
+
+  <!-- Main content area -->
+  <div class="grid grid-cols-[30%_70%] h-full">
+    <!-- Left Sidebar Area -->
+    <div class="grid grid-rows-[1fr_auto] bg-gray-100">
+      <!-- Channel + Sub List -->
+      <div class="grid grid-cols-[4.5rem_1fr]">
+        <!-- Channel Sidebar -->
+        <div class="bg-gray-800">
+          <div
+            class="h-[3rem] bg-amber-700 flex items-center justify-center text-white text-sm font-semibold"
+          >
+            Direct
+          </div>
+          <div class="text-white px-2 py-1">Sidebar</div>
+        </div>
+
+        <!-- Subchannel / DM user list -->
+        <div class="bg-gray-700">
+          <div
+            class="h-[3rem] bg-amber-700 flex items-center justify-center text-white text-sm font-semibold"
+          >
+            Channel / DM Name
+          </div>
+          <div class="text-white px-2 py-1">Subchannel list / DM users</div>
+        </div>
+      </div>
+
+      <!-- User profile bottom section -->
+      <div class="bg-yellow-700 h-[3.5rem] flex items-center px-4 text-white">
+        Avatar + Profile
+      </div>
+    </div>
+
+    <!-- Main Chat + Member Panel -->
+    <div class="grid grid-rows-[3rem_1fr]">
+      <!-- Message Header -->
+      <div class="bg-gray-300 flex items-center justify-between px-4">
+        Header message + members
+      </div>
+
+      <!-- Chat and Members -->
+      <div class="grid grid-cols-[3fr_1fr]">
+        <!-- Messages -->
+        <div class="bg-gray-400 px-4 overflow-y-auto">Messages</div>
+
+        <!-- Members -->
+        <div class="bg-gray-500 px-3 py-2 overflow-y-auto">Member list</div>
+      </div>
+    </div>
+  </div>
+</div>

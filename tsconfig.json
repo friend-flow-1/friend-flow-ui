@@ -49,6 +49,12 @@
       ],
       "@spartan-ng/ui-separator-helm": [
         ".\\src/app/shared/ui/ui-separator-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-popover-helm": [
+        ".\\src/app/shared/ui/ui-popover-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-tooltip-helm": [
+        ".\\src/app/shared/ui/ui-tooltip-helm/src/index.ts"
       ]
     }
   },

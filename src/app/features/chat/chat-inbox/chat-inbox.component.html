@@ -1,0 +1,23 @@
+<brn-popover>
+  <button
+    brnPopoverTrigger
+    hlmBtn
+    size="icon"
+    variant="ghost"
+    class="h-[2rem] w-[2rem]"
+    [hlmTooltipTrigger]="'Inbox'"
+    aria-describedby="Inbox"
+  >
+    <ng-icon
+      hlm
+      size="base"
+      name="matInboxOutline"
+      class="text-foreground-background"
+    />
+  </button>
+  <div
+    hlmPopoverContent
+    *brnPopoverContent="let ctx"
+    class="w-[30rem] h-[70vh] right-2 top-2"
+  ></div>
+</brn-popover>

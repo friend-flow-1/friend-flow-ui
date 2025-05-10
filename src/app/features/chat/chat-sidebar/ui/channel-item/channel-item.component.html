@@ -1,0 +1,28 @@
+<div
+  class="channel-item flex items-center space-x-3 px-2 py-2 hover:bg-gray-700 rounded-md cursor-pointer"
+  [ngClass]="{
+    'current-channel': isCurrentChannel(),
+    'activity-indicator': channel().hasActivity
+  }"
+>
+  <!-- Channel Avatar with conditional bars -->
+  <div class="w-10 h-10 rounded-md bg-gray-500 relative">
+    <img
+      *ngIf="channel()?.avatarUrl"
+      [src]="channel().avatarUrl"
+      alt="Channel Avatar"
+      class="w-full h-full rounded-md object-cover"
+    />
+    <!-- Activity Indicator Bar (for channels with activity) -->
+    <div
+      *ngIf="channel()?.hasActivity"
+      class="activity-bar absolute left-0 top-0 h-full w-1 bg-blue-400"
+    ></div>
+  </div>
+
+  <!-- Channel Info -->
+  <div class="flex-1">
+    <div class="text-white text-sm">{{ channel().name }}</div>
+    <div class="text-gray-400 text-xs">ID: {{ channel().id }}</div>
+  </div>
+</div>

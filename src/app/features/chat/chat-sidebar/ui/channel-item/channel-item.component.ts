@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ChatChannel } from '@shared/data-access/chat/chat-channel.service';
+import { HlmTooltipTriggerDirective } from '@shared/ui/ui-tooltip-helm/src';
 
 @Component({
   selector: 'app-channel-item',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, HlmTooltipTriggerDirective],
   templateUrl: './channel-item.component.html',
   styleUrl: './channel-item.component.scss',
 })

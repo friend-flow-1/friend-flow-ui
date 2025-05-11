@@ -7,6 +7,11 @@
 >
   <!-- Avatar box -->
   <div
+    [hlmTooltipTrigger]="channel().name"
+    position="right"
+    showDelay="0"
+    hideDelay="0"
+    aria-describedby="{{ channel().name }}"
     class="relative w-10 h-10 rounded-xl bg-background shrink-0 overflow-hidden"
   >
     <img

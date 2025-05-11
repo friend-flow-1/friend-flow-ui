@@ -16,8 +16,4 @@ import { ChannelItemComponent } from './ui/channel-item/channel-item.component';
 export class ChatSidebarComponent {
   chatChannelService = inject(ChatChannelService);
   chatSidebarService = inject(ChatSidebarService);
-
-  isCurrentChannel(channel: ChatChannel): boolean {
-    return this.chatSidebarService.currentChannelId() === channel.id;
-  }
 }

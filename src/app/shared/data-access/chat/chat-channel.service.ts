@@ -15,10 +15,10 @@ import {
 } from 'rxjs';
 
 export interface ChatChannel {
-  id: string;
+  id?: string;
   name: string;
   avatarUrl: string;
-  type: 'dm' | 'channel';
+  type?: 'dm' | 'channel';
   hasActivity?: boolean;
 }
 
@@ -104,25 +104,10 @@ export class ChatChannelService {
   }
 }
 
-const mockChannels: ChatChannel[] = [
-  {
-    id: '1',
-    name: 'General',
-    avatarUrl: '/assets/icons/channel-avatar-1.png',
-    type: 'channel',
-    hasActivity: true,
-  },
-  {
-    id: '2',
-    name: 'Random',
-    avatarUrl: '/assets/icons/channel-avatar-2.png',
-    type: 'channel',
-  },
-  {
-    id: '3',
-    name: 'Direct Message: John Doe',
-    avatarUrl: '/assets/icons/dm-avatar-1.png',
-    type: 'dm',
-    hasActivity: true,
-  },
-];
+const mockChannels: ChatChannel[] = Array.from({ length: 11 }, (_, i) => ({
+  id: (i + 1).toString(),
+  name: ['General', 'Random'][i] || 'Hello World',
+  avatarUrl: `https://picsum.photos/150/150?random=${i}`,
+  type: 'channel',
+  hasActivity: Math.random() < 0.5,
+}));

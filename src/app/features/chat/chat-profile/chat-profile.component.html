@@ -1,5 +1,36 @@
 <div class="bg-background p-1 h-[3.5rem]">
-  <div class="bg-yellow-700 h-full flex items-center px-4 text-white">
-    Avatar + Profile
+  <div
+    class="bg-secondary rounded-xl shadow-2xl h-full flex items-center justify-between gap-x-4 px-4 text-white"
+  >
+    <div
+      class="flex gap-x-2 items-center flex-1 rounded-md hover:bg-card cursor-pointer"
+    >
+      <hlm-avatar variant="medium">
+        <img alt="spartan logo. Resembling a spartanic shield" hlmAvatarImage />
+        <span class="text-white bg-destructive" hlmAvatarFallback>RG</span>
+      </hlm-avatar>
+      <div class="flex-1">
+        <div class="text-sm">Sir Solaris Vex</div>
+        <div class="text-xs">Locknight24</div>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <hlm-dialog>
+        <button
+          brnDialogTrigger
+          hlmBtn
+          size="icon"
+          variant="ghost"
+          class="rounded-md w-6 h-6"
+        >
+          <ng-icon hlm size="sm" name="matSettingsOutline" />
+        </button>
+        <hlm-dialog-content
+          class="min-w-[100vw] min-h-[100vh]"
+          *brnDialogContent="let ctx"
+        >
+        </hlm-dialog-content>
+      </hlm-dialog>
+    </div>
   </div>
 </div>

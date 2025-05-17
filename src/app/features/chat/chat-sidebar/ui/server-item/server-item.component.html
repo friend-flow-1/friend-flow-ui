@@ -7,17 +7,17 @@
 >
   <!-- Avatar box -->
   <div
-    [hlmTooltipTrigger]="channel().name"
+    [hlmTooltipTrigger]="server().name"
     position="right"
     showDelay="0"
     hideDelay="0"
-    aria-describedby="{{ channel().name }}"
+    aria-describedby="{{ server().name }}"
     class="relative w-10 h-10 rounded-xl bg-background shrink-0 overflow-hidden"
   >
     <img
-      *ngIf="channel().avatarUrl"
-      [src]="channel().avatarUrl"
-      alt="Channel Avatar"
+      *ngIf="server().avatarUrl"
+      [src]="server().avatarUrl"
+      alt="Server Avatar"
       class="w-full h-full object-cover"
     />
 
@@ -26,7 +26,7 @@
   <div
     class="absolute left-0 bg-primary transition-all duration-200 w-[4px] h-0 rounded-r-full"
     [ngClass]="{
-      'h-2': channel().hasActivity && !isActive(),
+      'h-2': server().hasActivity && !isActive(),
       'group-hover:h-5': !isActive(),
       'h-full': isActive()
     }"

@@ -4,9 +4,9 @@
   <div
     class="h-[3rem] w-full flex flex-col items-center justify-center text-white"
   >
-    <app-channel-item
+    <app-server-item
       class="w-full"
-      [channel]="{
+      [server]="{
         id: '',
         name: 'Direct Messages',
         avatarUrl: '/assets/icons/logo-ff-icon.png',
@@ -14,15 +14,15 @@
       }"
       [href]="`/chat/channels/@me`"
       [isActive]="'@me' === chatSidebarService.currentChannelId()"
-    ></app-channel-item>
+    ></app-server-item>
   </div>
   <div class="text-white flex flex-col justify-center gap-y-2">
-    @for (channel of chatChannelService.channels(); track $index) {
-    <app-channel-item
-      [channel]="channel"
-      [href]="`/chat/channels/${channel.id}`"
-      [isActive]="channel.id === chatSidebarService.currentChannelId()"
-    ></app-channel-item>
+    @for (server of chatServerService.servers(); track $index) {
+    <app-server-item
+      [server]="server"
+      [href]="`/chat/channels/${server.id}`"
+      [isActive]="server.id === chatSidebarService.currentChannelId()"
+    ></app-server-item>
     }
   </div>
 </div>

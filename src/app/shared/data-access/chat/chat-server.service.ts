@@ -14,16 +14,16 @@ import {
   switchMap,
 } from 'rxjs';
 
-export interface ChatChannel {
+export interface ChatServer {
   id?: string;
   name: string;
   avatarUrl: string;
-  type?: 'dm' | 'channel';
+  type?: 'dm' | 'server';
   hasActivity?: boolean;
 }
 
-export interface ChatChannelState {
-  channels: ChatChannel[];
+export interface ChatServerState {
+  servers: ChatServer[];
   loaded: boolean;
   error: string | null;
 }
@@ -31,68 +31,68 @@ export interface ChatChannelState {
 @Injectable({
   providedIn: 'root',
 })
-export class ChatChannelService {
+export class ChatServerService {
   private http = inject(HttpClient);
 
   // state
-  private state = signal<ChatChannelState>({
-    channels: [],
+  private state = signal<ChatServerState>({
+    servers: [],
     loaded: false,
     error: null,
   });
 
   // selectors
-  readonly channels = computed(() => this.state().channels);
+  readonly servers = computed(() => this.state().servers);
   readonly loaded = computed(() => this.state().loaded);
   readonly error = computed(() => this.state().error);
 
   // resources
-  readonly add$ = new Subject<ChatChannel>();
-  readonly edit$ = new Subject<{ id: string; data: Partial<ChatChannel> }>();
+  readonly add$ = new Subject<ChatServer>();
+  readonly edit$ = new Subject<{ id: string; data: Partial<ChatServer> }>();
   readonly remove$ = new Subject<string>();
 
-  readonly channelAdded$ = this.add$.pipe(
-    concatMap((channel) =>
+  readonly serverAdded$ = this.add$.pipe(
+    concatMap((server) =>
       this.http
-        .post<ChatChannel>(`${environment.apiUrl}/channels`, channel)
+        .post<ChatServer>(`${environment.apiUrl}/servers`, server)
         .pipe(catchError((err) => this.handleError(err)))
     )
   );
 
-  readonly channelEdited$ = this.edit$.pipe(
+  readonly serverEdited$ = this.edit$.pipe(
     mergeMap(({ id, data }) =>
       this.http
-        .patch<ChatChannel>(`${environment.apiUrl}/channels/${id}`, data)
+        .patch<ChatServer>(`${environment.apiUrl}/servers/${id}`, data)
         .pipe(catchError((err) => this.handleError(err)))
     )
   );
 
-  readonly channelRemoved$ = this.remove$.pipe(
+  readonly serverRemoved$ = this.remove$.pipe(
     mergeMap((id) =>
       this.http
-        .delete<void>(`${environment.apiUrl}/channels/${id}`)
+        .delete<void>(`${environment.apiUrl}/servers/${id}`)
         .pipe(catchError((err) => this.handleError(err)))
     )
   );
 
   constructor() {
     // Simulate API response with mock data
-    merge(this.channelAdded$, this.channelEdited$, this.channelRemoved$)
+    merge(this.serverAdded$, this.serverEdited$, this.serverRemoved$)
       .pipe(
         startWith(null),
         switchMap(() => {
-          // Here we simulate getting channels from an API but using mock data
-          return new Observable<ChatChannel[]>((observer) => {
-            observer.next(mockChannels); // Return mock data
+          // Here we simulate getting servers from an API but using mock data
+          return new Observable<ChatServer[]>((observer) => {
+            observer.next(mockservers); // Return mock data
             observer.complete();
           });
         }),
         takeUntilDestroyed()
       )
-      .subscribe((channels) =>
+      .subscribe((servers) =>
         this.state.update((state) => ({
           ...state,
-          channels,
+          servers,
           loaded: true,
         }))
       );
@@ -104,10 +104,10 @@ export class ChatChannelService {
   }
 }
 
-const mockChannels: ChatChannel[] = Array.from({ length: 11 }, (_, i) => ({
+const mockservers: ChatServer[] = Array.from({ length: 11 }, (_, i) => ({
   id: (i + 1).toString(),
   name: ['General', 'Random'][i] || 'Hello World',
   avatarUrl: `https://picsum.photos/150/150?random=${i}`,
-  type: 'channel',
+  type: 'server',
   hasActivity: Math.random() < 0.5,
 }));

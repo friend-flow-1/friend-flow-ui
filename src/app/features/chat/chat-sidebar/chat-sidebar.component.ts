@@ -1,19 +1,16 @@
 import { Component, computed, inject } from '@angular/core';
-import {
-  ChatChannel,
-  ChatChannelService,
-} from '@shared/data-access/chat/chat-channel.service';
+import { ChatServerService } from '@shared/data-access/chat/chat-server.service';
 import { ChatSidebarService } from './data-access/chat-sidebar.service';
-import { ChannelItemComponent } from './ui/channel-item/channel-item.component';
+import { ServerItemComponent } from './ui/server-item/server-item.component';
 
 @Component({
   selector: 'app-chat-sidebar',
   providers: [ChatSidebarService],
-  imports: [ChannelItemComponent],
+  imports: [ServerItemComponent],
   templateUrl: './chat-sidebar.component.html',
   styleUrl: './chat-sidebar.component.scss',
 })
 export class ChatSidebarComponent {
-  chatChannelService = inject(ChatChannelService);
+  chatServerService = inject(ChatServerService);
   chatSidebarService = inject(ChatSidebarService);
 }
